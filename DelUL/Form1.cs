@@ -34,8 +34,10 @@ namespace DelUL
             {
                 if (!string.IsNullOrEmpty(richTextBox1.Lines[i]))
                 {
+                   // richTextBox1.Lines[i] = richTextBox1.Lines[i].Trim(new char[] { '-' }).Replace("- ","");
+                    var ClearText = richTextBox1.Lines[i].Trim(new char[] { '-' }).Replace("- ", "");
                     stringBuilder.Append("<li>");
-                    stringBuilder.Append(richTextBox1.Lines[i].Replace("  ", " ").Replace("\r\n", "").Replace("\t", ""));
+                    stringBuilder.Append(ClearText.Replace("  ", " ").Replace("\r\n", "").Replace("\t", ""));
                     if (richTextBox1.Lines.Count() - i == 1 || (richTextBox1.Lines.Count() - i == 2) && string.IsNullOrEmpty(richTextBox1.Lines.Last())) 
                     {
                         stringBuilder.Append("</li>");
