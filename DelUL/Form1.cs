@@ -16,5 +16,22 @@ namespace DelUL
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine("<ul>");
+            foreach (var line  in richTextBox1.Lines)
+            {
+                if (!string.IsNullOrEmpty(line))
+                {
+                    stringBuilder.Append("<li>");
+                    stringBuilder.Append(line.Replace("  ", " ").Replace("\r\n", "").Replace("\t", ""));
+                    stringBuilder.AppendLine("</li>");
+                }
+            }
+            stringBuilder.AppendLine("</ul>");
+            richTextBox1.Text = stringBuilder.ToString();
+        }
     }
 }
