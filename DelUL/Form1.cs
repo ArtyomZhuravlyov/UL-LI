@@ -15,6 +15,7 @@ namespace DelUL
         public Form1()
         {
             InitializeComponent();
+            richTextBox1.MouseDown += new MouseEventHandler(btn_MouseDown);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -63,6 +64,24 @@ namespace DelUL
 
             stringBuilder.Append("</ul>");
             richTextBox1.Text = stringBuilder.ToString();
+        }
+
+
+        void btn_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                richTextBox1.Text = Clipboard.GetText();
+                button1_Click(null, null);
+                Clipboard.SetText(richTextBox1.Text);
+                //do something
+
+            }
+            else if (e.Button == MouseButtons.Right)
+            {
+                Clipboard.SetText(richTextBox1.Text);
+                //do something
+            }
         }
     }
 }
